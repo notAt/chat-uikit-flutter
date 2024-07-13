@@ -268,7 +268,7 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
       final height = originHeight != 0 ? originHeight : currentKeyboardHeight;
       return height;
     } else if (showMore || showEmojiPanel) {
-      return 248.0 + (bottomPadding ?? 0.0);
+      return 124.0 + (bottomPadding ?? 0.0);
     } else if (widget.textEditingController.text.length >= 46 && showKeyboard == false) {
       return 25 + (bottomPadding ?? 0.0);
     } else {
@@ -450,7 +450,7 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
                             }
                           },
                           child: SvgPicture.asset(
-                            showSendSoundText ? 'images/keyboard.svg' : 'images/voice.svg',
+                            showSendSoundText ? 'images/voice_message_tapped.png' : 'images/voice_message_default.png',
                             package: 'tencent_cloud_chat_uikit',
                             color: const Color.fromRGBO(68, 68, 68, 1),
                             height: 28,
@@ -459,7 +459,7 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
                         ),
                       if (widget.forbiddenText == null)
                         const SizedBox(
-                          width: 10,
+                          width: 12,
                         ),
                       if (widget.forbiddenText == null)
                         Expanded(
@@ -497,7 +497,7 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
                                           border: InputBorder.none,
                                           hintStyle: const TextStyle(
                                             // fontSize: 10,
-                                            color: Color(0xffAEA4A3),
+                                            color: Color(0xffBFBFBF),
                                           ),
                                           fillColor: Colors.white,
                                           filled: true,
@@ -520,9 +520,9 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
                                     }
                                   }),
                         ),
-                      if (widget.forbiddenText == null)
+                      if (widget.showSendEmoji && widget.forbiddenText == null)
                         const SizedBox(
-                          width: 10,
+                          width: 12,
                         ),
                       if (widget.showSendEmoji && widget.forbiddenText == null)
                         InkWell(
@@ -533,7 +533,7 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
                           child: PlatformUtils().isWeb
                               ? Icon(showEmojiPanel ? Icons.keyboard_alt_outlined : Icons.mood_outlined, color: hexToColor("5c6168"), size: 32)
                               : SvgPicture.asset(
-                                  showEmojiPanel ? 'images/keyboard.svg' : 'images/face.svg',
+                                  showEmojiPanel ? 'images/voice_message_tapped.png' : 'images/face.svg',
                                   package: 'tencent_cloud_chat_uikit',
                                   color: const Color.fromRGBO(68, 68, 68, 1),
                                   height: 28,
@@ -542,7 +542,7 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
                         ),
                       if (widget.forbiddenText == null)
                         const SizedBox(
-                          width: 10,
+                          width: 12,
                         ),
                       if (widget.showMorePanel && widget.forbiddenText == null && showMoreButton)
                         InkWell(
@@ -554,7 +554,7 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
                           child: PlatformUtils().isWeb
                               ? Icon(Icons.add_circle_outline_outlined, color: hexToColor("5c6168"), size: 32)
                               : SvgPicture.asset(
-                                  'images/add.svg',
+                                  'images/send_other_message.png',
                                   package: 'tencent_cloud_chat_uikit',
                                   color: const Color.fromRGBO(68, 68, 68, 1),
                                   height: 28,

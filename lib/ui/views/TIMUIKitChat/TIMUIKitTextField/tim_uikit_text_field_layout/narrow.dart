@@ -469,10 +469,9 @@ class _TIMUIKitTextFieldLayoutNarrowState
                               });
                             }
                           },
-                          child: SvgPicture.asset(
-                            showSendSoundText
-                                ? 'images/voice_message_tapped.png'
-                                : 'images/voice_message_default.png',
+
+                          child: Image.asset(
+                            showSendSoundText ? 'images/voice_message_tapped.png' : 'images/voice_message_default.png',
                             package: 'tencent_cloud_chat_uikit',
                             color: const Color.fromRGBO(68, 68, 68, 1),
                             height: 28,
@@ -576,17 +575,16 @@ class _TIMUIKitTextFieldLayoutNarrowState
                             widget.goDownBottom();
                           },
                           child: PlatformUtils().isWeb
-                              ? Icon(
-                                  showEmojiPanel
-                                      ? Icons.keyboard_alt_outlined
-                                      : Icons.mood_outlined,
-                                  color: hexToColor("5c6168"),
-                                  size: 32,
-                                )
-                              : SvgPicture.asset(
-                                  showEmojiPanel
-                                      ? 'images/voice_message_tapped.png'
-                                      : 'images/face.svg',
+                              ? Icon(showEmojiPanel ? Icons.keyboard_alt_outlined : Icons.mood_outlined, color: hexToColor("5c6168"), size: 32)
+                              : showEmojiPanel ? Image.asset(
+                                'images/voice_message_tapped.png',
+                                  package: 'tencent_cloud_chat_uikit',
+                                  color: const Color.fromRGBO(68, 68, 68, 1),
+                                  height: 28,
+                                  width: 28,
+                                ) : 
+                               SvgPicture.asset(
+                                'images/face.svg',
                                   package: 'tencent_cloud_chat_uikit',
                                   color: const Color.fromRGBO(68, 68, 68, 1),
                                   height: 28,
@@ -606,12 +604,8 @@ class _TIMUIKitTextFieldLayoutNarrowState
                             widget.goDownBottom();
                           },
                           child: PlatformUtils().isWeb
-                              ? Icon(
-                                  Icons.add_circle_outline_outlined,
-                                  color: hexToColor("5c6168"),
-                                  size: 32,
-                                )
-                              : SvgPicture.asset(
+                              ? Icon(Icons.add_circle_outline_outlined, color: hexToColor("5c6168"), size: 32)
+                              : Image.asset(
                                   'images/send_other_message.png',
                                   package: 'tencent_cloud_chat_uikit',
                                   color: const Color.fromRGBO(68, 68, 68, 1),

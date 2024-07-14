@@ -443,12 +443,12 @@ class _TIMUIKitTextFieldLayoutNarrowState
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 8,
-                    horizontal: 16,
-                  ),
+
+                  padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 16),
                   constraints: const BoxConstraints(minHeight: 50),
                   child: Row(
+                    mainAxisAlignment:mainAxisAlignment.center,
+                    crossAxisAlignment: crossAxisAlignment.center,
                     children: [
                       if (PlatformUtils().isMobile && widget.showSendAudio)
                         InkWell(
@@ -474,8 +474,8 @@ class _TIMUIKitTextFieldLayoutNarrowState
                             showSendSoundText ? 'images/voice_message_tapped.png' : 'images/voice_message_default.png',
                             package: 'tencent_cloud_chat_uikit',
                             color: const Color.fromRGBO(68, 68, 68, 1),
-                            height: 28,
-                            width: 28,
+                            height: 24,
+                            width: 24,
                           ),
                         ),
                       if (widget.forbiddenText == null)
@@ -580,15 +580,15 @@ class _TIMUIKitTextFieldLayoutNarrowState
                                 'images/voice_message_tapped.png',
                                   package: 'tencent_cloud_chat_uikit',
                                   color: const Color.fromRGBO(68, 68, 68, 1),
-                                  height: 28,
-                                  width: 28,
+                                  height: 24,
+                                  width: 24,
                                 ) : 
                                SvgPicture.asset(
                                 'images/face.svg',
                                   package: 'tencent_cloud_chat_uikit',
                                   color: const Color.fromRGBO(68, 68, 68, 1),
-                                  height: 28,
-                                  width: 28,
+                                  height: 24,
+                                  width: 24,
                                 ),
                         ),
 
@@ -609,8 +609,8 @@ class _TIMUIKitTextFieldLayoutNarrowState
                                   'images/send_other_message.png',
                                   package: 'tencent_cloud_chat_uikit',
                                   color: const Color.fromRGBO(68, 68, 68, 1),
-                                  height: 28,
-                                  width: 28,
+                                  height: 24,
+                                  width: 24,
                                 ),
                         ),
                       if ((isAndroidDevice() || isWebDevice()) &&

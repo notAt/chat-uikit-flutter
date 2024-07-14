@@ -413,8 +413,8 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
                   padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
                   constraints: const BoxConstraints(minHeight: 50),
                   child: Row(
-                    mainAxisAlignment:mainAxisAlignment.center,
-                    crossAxisAlignment: crossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       if (widget.forbiddenText != null)
                         Expanded(

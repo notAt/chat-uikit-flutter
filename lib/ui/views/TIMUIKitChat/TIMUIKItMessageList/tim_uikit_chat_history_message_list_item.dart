@@ -1406,68 +1406,74 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
                                               TextStyle(fontSize: 12, color: theme.weakTextColor),
                                         ),
                                       )),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  if (isSelf)
-                                    renderHoverTipAndReadStatus(
-                                        model, isSelf, message, isPeerRead, theme, isDownloadWaiting),
-                                  Container(
-                                    constraints: BoxConstraints(
-                                      maxWidth: constraints.maxWidth * 0.77,
-                                    ),
-                                    child: Builder(builder: (context) {
-                                      return GestureDetector(
-                                        child: IgnorePointer(
-                                            ignoring: model.isMultiSelect,
-                                            child: _getMessageItemBuilder(message, message.status, model)),
-                                        onSecondaryTapDown: (details) {
-                                          if (widget.onLongPress != null) {
-                                            widget.onLongPress!(context, message);
-                                            return;
-                                          }
-                                          if (!PlatformUtils().isMobile) {
-                                            if (widget.allowLongPress) {
-                                              _onOpenToolTip(context, message, model, theme, details, false, false);
-                                            }
-                                          }
-                                        },
-                                        onLongPress: () {
-                                          if (widget.onLongPress != null) {
-                                            widget.onLongPress!(context, message);
-                                            return;
-                                          }
-                                          if (widget.allowLongPress && !isDesktopScreen) {
-                                            _onOpenToolTip(context, message, model, theme, null, false, false);
-                                          }
-                                        },
-                                        onTapDown: (details) {
-                                          _tapDetails = details;
-                                        },
-                                      );
-                                    }),
+                            Row(
+                              crossAxisAlignment: message.elemType ==
+                                      MessageElemType.V2TIM_ELEM_TYPE_SOUND
+                                  ? CrossAxisAlignment.center
+                                  : CrossAxisAlignment.end,
+                              children: [
+                                if (isSelf) renderHoverTipAndReadStatus(model, isSelf, message, isPeerRead, theme, isDownloadWaiting),
+                                Container(
+                                  constraints: BoxConstraints(
+                                    maxWidth: constraints.maxWidth * 0.77,
                                   ),
-                                  if (!isSelf &&
-                                      message.elemType == MessageElemType.V2TIM_ELEM_TYPE_SOUND &&
-                                      message.localCustomInt != null &&
-                                      message.localCustomInt != HistoryMessageDartConstant.read)
-                                    Padding(
-                                        padding: const EdgeInsets.only(left: 5, bottom: 12),
-                                        child: Icon(Icons.circle, color: theme.cautionColor, size: 10)),
-                                  if (!isSelf)
-                                    renderHoverTipAndReadStatus(
-                                        model, isSelf, message, isPeerRead, theme, isDownloadWaiting),
-                                ],
-                              ),
-                              TIMUIKitTextTranslationElem(
-                                  message: message,
-                                  customEmojiStickerList: widget.customEmojiStickerList,
-                                  isFromSelf: isSelf,
-                                  isShowJump: false,
-                                  clearJump: () {},
-                                  chatModel: model),
-                              if (widget.bottomRowBuilder != null) widget.bottomRowBuilder!(context, message)
-                            ],
+                                  child: Builder(builder: (context) {
+                                    return Column(
+                                      crossAxisAlignment: (message.isSelf ?? true) ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                                      children: [
+                                        GestureDetector(
+                                          child: IgnorePointer(ignoring: model.isMultiSelect, child: _getMessageItemBuilder(message, message.status, model)),
+                                          onSecondaryTapDown: (details) {
+                                            if (widget.onLongPress != null) {
+                                              widget.onLongPress!(context, message);
+                                              return;
+                                            }
+                                            if (!PlatformUtils().isMobile) {
+                                              if (widget.allowLongPress) {
+                                                _onOpenToolTip(context, message, model, theme, details, false, false);
+                                              }
+                                            }
+                                          },
+                                          onLongPress: () {
+                                            if (widget.onLongPress != null) {
+                                              widget.onLongPress!(context, message);
+                                              return;
+                                            }
+                                            if (widget.allowLongPress && !isDesktopScreen) {
+                                              _onOpenToolTip(context, message, model, theme, null, false, false);
+                                            }
+                                          },
+                                          onTapDown: (details) {
+                                            _tapDetails = details;
+                                          },
+                                        ),
+                                        TIMUIKitTextTranslationElem(
+                                            message: message,
+                                            isUseDefaultEmoji: widget.isUseDefaultEmoji,
+                                            customEmojiStickerList: widget.customEmojiStickerList,
+                                            isFromSelf: message.isSelf ?? true,
+                                            isShowJump: false,
+                                            clearJump: () {},
+                                            chatModel: model)
+                                      ],
+                                    );
+                                  }),
+                                ),
+                                if (!isSelf && message.elemType == MessageElemType.V2TIM_ELEM_TYPE_SOUND && message.localCustomInt != null && message.localCustomInt != HistoryMessageDartConstant.read)
+                                  Padding(padding: const EdgeInsets.only(left: 5, bottom: 0), child: Icon(Icons.circle, color: theme.cautionColor, size: 10)),
+                                if (!isSelf) renderHoverTipAndReadStatus(model, isSelf, message, isPeerRead, theme, isDownloadWaiting),
+                              ],
+                            ),
+                            if (widget.bottomRowBuilder != null) widget.bottomRowBuilder!(context, message)
+                          ],
+                        ),
+                      ),
+                      if (!isSelf && widget.message.elemType == 6 && isDownloadWaiting)
+                        Container(
+                          margin: const EdgeInsets.only(top: 46, left: 10),
+                          child: LoadingAnimationWidget.threeArchedCircle(
+                            color: theme.weakTextColor ?? Colors.grey,
+                            size: 20,
                           ),
                         ),
                         if (!isSelf && widget.message.elemType == 6 && isDownloadWaiting)

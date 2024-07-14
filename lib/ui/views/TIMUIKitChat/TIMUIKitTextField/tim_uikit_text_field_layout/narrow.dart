@@ -496,11 +496,17 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
                                       },
                                       textAlignVertical: TextAlignVertical.top,
                                       decoration: InputDecoration(
-                                          border: InputBorder.none,
+                                          border: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.circular(
+                                                4), // 设置圆角
+                                          ),
                                           hintStyle: const TextStyle(
                                             // fontSize: 10,
                                             color: Color(0xffBFBFBF),
                                           ),
+                                          contentPadding: EdgeInsets.symmetric(
+                                              vertical: 6, horizontal: 8),
                                           fillColor: Colors.white,
                                           filled: true,
                                           isDense: true,

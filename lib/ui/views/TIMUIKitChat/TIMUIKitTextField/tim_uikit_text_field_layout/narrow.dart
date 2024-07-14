@@ -443,8 +443,7 @@ class _TIMUIKitTextFieldLayoutNarrowState
             child: Column(
               children: [
                 Container(
-
-                  padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
                   constraints: const BoxConstraints(minHeight: 50),
                   child: Row(
                     mainAxisAlignment:mainAxisAlignment.center,

@@ -517,45 +517,38 @@ class _TIMUIKitTextFieldLayoutNarrowState
                                             .isEmpty) {
                                           showMoreButton = true;
                                         }
-                                      });
-                                    },
-                                    textAlignVertical: TextAlignVertical.top,
-                                    decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      hintStyle: const TextStyle(
-                                        // fontSize: 10,
-                                        color: Color(0xffBFBFBF),
-                                      ),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                      isDense: true,
-                                      hintText: widget.hintText ?? '',
-                                    ),
-                                    controller: widget.textEditingController,
-                                    specialTextSpanBuilder:
-                                        PlatformUtils().isWeb
-                                        ? null
-                                        : DefaultSpecialTextSpanBuilder(
-                                            isUseQQPackage:
-                                                (widget
-                                                        .model
-                                                        .chatConfig
-                                                        .stickerPanelConfig
-                                                        ?.useTencentCloudChatStickerPackage ??
-                                                    true) ||
-                                                widget.isUseDefaultEmoji,
-                                            isUseTencentCloudChatPackage:
-                                                widget
-                                                    .model
-                                                    .chatConfig
-                                                    .stickerPanelConfig
-                                                    ?.useTencentCloudChatStickerPackage ??
-                                                true,
-                                            customEmojiStickerList:
-                                                widget.customEmojiStickerList,
-                                            showAtBackground: true,
+                                        setState(() {
+                                          if (widget.textEditingController.text.isEmpty) {
+                                            showMoreButton = true;
+                                          }
+                                        });
+                                      },
+                                      textAlignVertical: TextAlignVertical.top,
+                                      decoration: InputDecoration(
+                                          border: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.circular(
+                                                4), // 设置圆角
                                           ),
-                                  ),
+                                          hintStyle: const TextStyle(
+                                            // fontSize: 10,
+                                            color: Color(0xffBFBFBF),
+                                          ),
+                                          contentPadding: EdgeInsets.symmetric(
+                                              vertical: 6, horizontal: 8),
+                                          fillColor: Colors.white,
+                                          filled: true,
+                                          isDense: true,
+                                          hintText: widget.hintText ?? ''),
+                                      controller: widget.textEditingController,
+                                      specialTextSpanBuilder: PlatformUtils().isWeb
+                                          ? null
+                                          : DefaultSpecialTextSpanBuilder(
+                                              isUseQQPackage: (widget.model.chatConfig.stickerPanelConfig?.useTencentCloudChatStickerPackage ?? true) || widget.isUseDefaultEmoji,
+                                              isUseTencentCloudChatPackage: widget.model.chatConfig.stickerPanelConfig?.useTencentCloudChatStickerPackage ?? true,
+                                              customEmojiStickerList: widget.customEmojiStickerList,
+                                              showAtBackground: true,
+                                            )),
                                   onChanged: (bool visibility) {
                                     if (showKeyboard != visibility) {
                                       setState(() {

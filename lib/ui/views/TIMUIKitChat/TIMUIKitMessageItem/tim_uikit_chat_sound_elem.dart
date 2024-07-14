@@ -207,7 +207,7 @@ class _TIMUIKitSoundElemState extends TIMUIKitState<TIMUIKitSoundElem> {
                   ? [
                       Container(width: _getSoundLen()),
                       Text(
-                        "''${stateElement.duration} ",
+                        "${stateElement.duration}'' ",
                         style: widget.fontStyle,
                       ),
                       isPlaying

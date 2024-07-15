@@ -226,17 +226,16 @@ class _TIMUIKitTextElemState extends TIMUIKitState<TIMUIKitTextElem> {
           // You can render the widget from extension directly, with a [TextStyle] optionally.
           widget.chatModel.chatConfig.urlPreviewType != UrlPreviewType.none
               ? textWithLink!(
-                  style: widget.fontStyle ??
-                      TextStyle(
-                          fontSize: isDesktopScreen ? 14 : 16,
-                          textBaseline: TextBaseline.ideographic,
-                          height: widget.chatModel.chatConfig.textHeight))
+                  style: TextStyle(
+                      fontSize: 16,
+                      textBaseline: TextBaseline.ideographic,
+                      color: widget.isFromSelf ? Colors.white : Colors.black,
+                      height: widget.chatModel.chatConfig.textHeight))
               : ExtendedText(widget.message.textElem?.text ?? "",
                   softWrap: true,
-                  style: widget.fontStyle ??
-                      TextStyle(
-                          fontSize: isDesktopScreen ? 14 : 16,
-                          height: widget.chatModel.chatConfig.textHeight),
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: widget.isFromSelf ? Colors.white : Colors.black),
                   specialTextSpanBuilder: DefaultSpecialTextSpanBuilder(
                     isUseQQPackage: (widget
                                 .chatModel

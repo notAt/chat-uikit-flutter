@@ -208,7 +208,11 @@ class _TIMUIKitSoundElemState extends TIMUIKitState<TIMUIKitSoundElem> {
                       Container(width: _getSoundLen()),
                       Text(
                         "${stateElement.duration}'' ",
-                        style: widget.fontStyle,
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: widget.isFromSelf
+                                ? Colors.white
+                                : Colors.black),
                       ),
                       isPlaying
                           ? Image.asset(
@@ -240,7 +244,11 @@ class _TIMUIKitSoundElemState extends TIMUIKitState<TIMUIKitSoundElem> {
                             ),
                       Text(
                         " ${stateElement.duration}''",
-                        style: widget.fontStyle,
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: widget.isFromSelf
+                                ? Colors.white
+                                : Colors.black),
                       ),
                       Container(width: _getSoundLen()),
                     ],

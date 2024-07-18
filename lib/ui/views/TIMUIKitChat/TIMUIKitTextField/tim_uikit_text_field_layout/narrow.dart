@@ -443,8 +443,8 @@ class _TIMUIKitTextFieldLayoutNarrowState
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
-                  constraints: const BoxConstraints(minHeight: 50),
+                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  constraints: const BoxConstraints(minHeight: 56),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -534,8 +534,8 @@ class _TIMUIKitTextFieldLayoutNarrowState
                                             // fontSize: 10,
                                             color: Color(0xffBFBFBF),
                                           ),
-                                          contentPadding: EdgeInsets.symmetric(
-                                              vertical: 6, horizontal: 8),
+                                          contentPadding: const EdgeInsets.symmetric(
+                                              vertical: 8, horizontal: 8),
                                           fillColor: Colors.white,
                                           filled: true,
                                           isDense: true,

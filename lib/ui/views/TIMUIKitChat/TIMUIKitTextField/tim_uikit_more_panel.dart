@@ -401,8 +401,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
 
       if (PlatformUtils().isMobile) {
         final pickedAssets = await AssetPicker.pickAssets(context,
-         pickerConfig: const AssetPickerConfig(
-              specialPickerType: SpecialPickerType.noPreview));
+         pickerConfig: const AssetPickerConfig());
 
         if (pickedAssets != null) {
           for (var asset in pickedAssets) {

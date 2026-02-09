@@ -1449,7 +1449,6 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
                                         ),
                                         TIMUIKitTextTranslationElem(
                                             message: message,
-                                            isUseDefaultEmoji: widget.isUseDefaultEmoji,
                                             customEmojiStickerList: widget.customEmojiStickerList,
                                             isFromSelf: message.isSelf ?? true,
                                             isShowJump: false,

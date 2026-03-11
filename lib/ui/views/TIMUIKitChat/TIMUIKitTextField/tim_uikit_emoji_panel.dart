@@ -19,7 +19,7 @@ class EmojiPanel extends TIMUIKitStatelessWidget {
     required this.onTapEmoji,
     required this.onSubmitted,
     required this.delete,
-    this.showBottomContainer = true, // 可选参数，是否展示下方的底部导航栏
+    this.showBottomContainer = false, // 可选参数，是否展示下方的底部导航栏
   }) : super(key: key);
 
   @override

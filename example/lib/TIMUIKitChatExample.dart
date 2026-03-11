@@ -49,7 +49,8 @@ class TIMUIKitChatExample extends StatelessWidget {
         addCustomEmojiText: addCustomEmojiText,
         customStickerPackageList: [
           ...defaultEmojiList,
-        ]);
+        ]
+        );
   }
 
   @override
@@ -61,7 +62,7 @@ class TIMUIKitChatExample extends StatelessWidget {
               userID: "10040818",
               showName: "Test Chat",
               type: 1),
-      customStickerPanel: renderCustomStickerPanel,
+      // customStickerPanel: renderCustomStickerPanel,
       config: const TIMUIKitChatConfig(
         // 仅供演示，非全部配置项，实际使用中，可只传和默认项不同的参数，无需传入所有开关
         isAllowClickAvatar: true,
@@ -70,6 +71,7 @@ class TIMUIKitChatExample extends StatelessWidget {
         isShowGroupReadingStatus: true,
         notificationTitle: "",
         isUseMessageReaction: true,
+        isAllowEmojiPanel: false,
         groupReadReceiptPermissionList: [
           GroupReceiptAllowType.work,
           GroupReceiptAllowType.meeting,

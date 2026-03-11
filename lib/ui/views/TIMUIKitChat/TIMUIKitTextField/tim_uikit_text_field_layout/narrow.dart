@@ -265,7 +265,7 @@ class _TIMUIKitTextFieldLayoutNarrowState
               }),
               customStickerPackageList: widget.stickerPackageList,
               lightPrimaryColor: theme.lightPrimaryColor,
-            );
+              bottomColor: const Color(0xFFEDEDED));
     }
 
     if (showMore) {
@@ -294,7 +294,7 @@ class _TIMUIKitTextFieldLayoutNarrowState
       final height = originHeight != 0 ? originHeight : currentKeyboardHeight;
       return height;
     } else if (showMore || showEmojiPanel) {
-      return 124.0 + (bottomPadding ?? 0.0);
+      return 248.0 + (bottomPadding ?? 0.0);
     } else if (widget.textEditingController.text.length >= 46 &&
         showKeyboard == false) {
       return 25 + (bottomPadding ?? 0.0);
@@ -452,33 +452,32 @@ class _TIMUIKitTextFieldLayoutNarrowState
                     children: [
                       if (PlatformUtils().isMobile && widget.showSendAudio)
                         InkWell(
-                          onTap: () async {
-                            showKeyboard = showSendSoundText;
-                            if (showSendSoundText) {
-                              widget.focusNode.requestFocus();
-                            }
-                            if (await Permissions.checkPermission(
-                              context,
-                              Permission.microphone.value,
-                              theme,
-                            )) {
-                              setState(() {
-                                showEmojiPanel = false;
-                                showMore = false;
-                                showSendSoundText = !showSendSoundText;
-                              });
-                            }
-                          },
-                          child: Image.asset(
-                            showSendSoundText
-                                ? 'images/voice_message_tapped.png'
-                                : 'images/voice_message_default.png',
-                            package: 'tencent_cloud_chat_uikit',
-                            color: const Color.fromRGBO(68, 68, 68, 1),
-                            height: 24,
-                            width: 24,
-                          ),
-                        ),
+                            onTap: () async {
+                              showKeyboard = showSendSoundText;
+                              if (showSendSoundText) {
+                                widget.focusNode.requestFocus();
+                              }
+                              if (await Permissions.checkPermission(
+                                context,
+                                Permission.microphone.value,
+                                theme,
+                              )) {
+                                setState(() {
+                                  showEmojiPanel = false;
+                                  showMore = false;
+                                  showSendSoundText = !showSendSoundText;
+                                });
+                              }
+                            },
+                            child: SvgPicture.asset(
+                              showSendSoundText
+                                  ? 'images/voice_message_tapped.svg'
+                                  : 'images/voice_message_default.svg',
+                              package: 'tencent_cloud_chat_uikit',
+                              colorFilter: const ColorFilter.mode(Color.fromRGBO(26, 26, 26, 1), BlendMode.srcIn),
+                              height: 24,
+                              width: 24,
+                            )),
                       const SizedBox(width: 12),
                       Expanded(
                         child: showSendSoundText
@@ -574,6 +573,7 @@ class _TIMUIKitTextFieldLayoutNarrowState
                                 ),
                               ]),
                       ),
+                      const SizedBox(width: 12),
                       InkWell(
                         onTap: () {
                           _openEmojiPanel();
@@ -587,24 +587,23 @@ class _TIMUIKitTextFieldLayoutNarrowState
                                 color: hexToColor("5c6168"),
                                 size: 32)
                             : showEmojiPanel
-                                ? Image.asset(
-                                    'images/voice_message_tapped.png',
+                                ? SvgPicture.asset(
+                                    'images/voice_message_tapped.svg',
                                     package: 'tencent_cloud_chat_uikit',
-                                    color: const Color.fromRGBO(68, 68, 68, 1),
+                                    colorFilter: const ColorFilter.mode(Color.fromRGBO(26, 26, 26, 1), BlendMode.srcIn),
                                     height: 24,
                                     width: 24,
                                   )
                                 : SvgPicture.asset(
-                                    'images/face.svg',
+                                    'images/emoj_default.svg',
                                     package: 'tencent_cloud_chat_uikit',
-                                    color: const Color.fromRGBO(68, 68, 68, 1),
+                                    colorFilter: const ColorFilter.mode(Color.fromRGBO(26, 26, 26, 1), BlendMode.srcIn),
                                     height: 24,
                                     width: 24,
                                   ),
                       ),
                       const SizedBox(width: 12),
-                      if (widget.showMorePanel &&
-                          showMoreButton)
+                      if (widget.showMorePanel && showMoreButton)
                         InkWell(
                           onTap: () {
                             // model.sendCustomMessage(data: "a", convID: model.currentSelectedConv, convType: model.currentSelectedConvType == 1 ? ConvType.c2c : ConvType.group);
@@ -614,10 +613,10 @@ class _TIMUIKitTextFieldLayoutNarrowState
                           child: PlatformUtils().isWeb
                               ? Icon(Icons.add_circle_outline_outlined,
                                   color: hexToColor("5c6168"), size: 32)
-                              : Image.asset(
-                                  'images/send_other_message.png',
+                              : SvgPicture.asset(
+                                  'images/send_other_message.svg',
                                   package: 'tencent_cloud_chat_uikit',
-                                  color: const Color.fromRGBO(68, 68, 68, 1),
+                                  colorFilter: const ColorFilter.mode(Color.fromRGBO(26, 26, 26, 1), BlendMode.srcIn),
                                   height: 24,
                                   width: 24,
                                 ),
@@ -645,6 +644,7 @@ class _TIMUIKitTextFieldLayoutNarrowState
                   ),
                 ),
                 AnimatedContainer(
+                  color: const Color(0xFFEDEDED),
                   duration: Duration(
                     milliseconds:
                         (showKeyboard && PlatformUtils().isAndroid) ? 200 : 340,

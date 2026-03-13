@@ -265,7 +265,8 @@ class _TIMUIKitTextFieldLayoutNarrowState
               }),
               customStickerPackageList: widget.stickerPackageList,
               lightPrimaryColor: theme.lightPrimaryColor,
-              bottomColor: const Color(0xFFEDEDED));
+              backgroundColor: hexToColor("f5f5f6"),
+              );
     }
 
     if (showMore) {
@@ -644,7 +645,7 @@ class _TIMUIKitTextFieldLayoutNarrowState
                   ),
                 ),
                 AnimatedContainer(
-                  color: const Color(0xFFEDEDED),
+                  color: hexToColor("f5f5f6"),
                   duration: Duration(
                     milliseconds:
                         (showKeyboard && PlatformUtils().isAndroid) ? 200 : 340,

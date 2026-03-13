@@ -63,7 +63,10 @@ class TIMUIKitChatExample extends StatelessWidget {
               showName: "Test Chat",
               type: 1),
       // customStickerPanel: renderCustomStickerPanel,
-      config: const TIMUIKitChatConfig(
+      config: TIMUIKitChatConfig(
+        stickerPanelConfig: StickerPanelConfig(
+            useQQStickerPackage: false,
+            useTencentCloudChatStickerPackage: false),
         // 仅供演示，非全部配置项，实际使用中，可只传和默认项不同的参数，无需传入所有开关
         isAllowClickAvatar: true,
         isAllowLongPressMessage: true,
@@ -72,7 +75,7 @@ class TIMUIKitChatExample extends StatelessWidget {
         notificationTitle: "",
         isUseMessageReaction: true,
         isAllowEmojiPanel: false,
-        groupReadReceiptPermissionList: [
+        groupReadReceiptPermissionList: const [
           GroupReceiptAllowType.work,
           GroupReceiptAllowType.meeting,
           GroupReceiptAllowType.public

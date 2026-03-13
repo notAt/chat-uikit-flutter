@@ -201,7 +201,7 @@ class _InputTextFieldState extends TIMUIKitState<TIMUIKitInputTextField> {
         return CustomSticker(index: 0, name: emojiItem.toString(), unicode: emojiItem);
       }).toList();
       stickerPackageList
-          .add(CustomStickerPackage(name: "defaultEmoji", stickerList: defEmojiList, menuItem: defEmojiList[0]));
+          .add(CustomStickerPackage(name: "defaultEmoji", stickerList: defEmojiList, menuItem: const CustomSticker(index: 0, name: '', unicode: 0)));
     }
 
     stickerPackageList.addAll(stickerConfig.customStickerPackages);
